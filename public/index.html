@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Battle of the Coders</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <main id="auth" class="wrap" hidden></main>
+
+    <div id="app" hidden>
+      <header><div class="logo">&lt;BATTLE OF THE CODERS/&gt;</div></header>
+      <section id="v-home" class="view">
+        <aside class="col">
+          <div class="card">
+            <b>🏆 Leaderboard</b>
+            <div class="tabs" id="lb-tabs">
+              <button data-m="best">🔥 Best</button>
+              <button data-m="wins" class="ghost">🏆 Wins</button>
+              <button data-m="streak" class="ghost">⚡ Current</button>
+              <button data-m="xp" class="ghost">⭐ XP</button>
+            </div>
+            <div id="lb-list" class="lb"><p class="mut">Loading…</p></div>
+          </div>
+          <div class="card">
+            <b>🟢 Online now <span class="pill" id="on-n">0</span></b>
+            <div id="on-list" class="lb"><p class="mut">Loading…</p></div>
+          </div>
+        </aside>
+
+        <div class="col">
+          <div class="card">
+            <h2>Hi, <span id="hn"></span> 👋</h2>
+            <!-- Your level: rank, XP bar and XP left for the next level (filled in by main.js → loadMe) -->
+            <div class="lvl" title="Your level and XP">
+              <span class="pill" id="lv-pill"></span>
+              <div class="prog"><i id="lv-bar"></i></div>
+              <span class="mut" id="lv-xp"></span>
+            </div>
+            <p class="mut">
+              Two coders, one random topic, one AI judge. Make it clean, make it
+              clever.
+            </p>
+            <button id="hc">⚔️ Create a room</button>
+            <button class="ghost" id="hl">Open the Arena</button>
+          </div>
+          <div class="card">
+            <b>How it works</b>
+            <p class="mut">
+              1. Both players hit ready · 2. AI rolls a topic · 3. Pick your
+              language (coin flip if you differ) · 4. Code for 3, 5 or 10
+              minutes, test with Run · 5. AI picks the winner.
+            </p>
+            <p class="mut">
+              Leaving the tab during a match = disqualified. Pasting is
+              disabled.
+            </p>
+          </div>
+        </div>
+
+        <aside class="col">
+          <div class="card">
+            <b>🟢 Open rooms <span class="pill" id="open-n">0</span></b>
+            <div id="open" class="lb"><p class="mut">Loading…</p></div>
+          </div>
+          <div class="card">
+            <b>🔴 Live now <span class="pill" id="live-n">0</span></b>
+            <div id="live" class="lb"><p class="mut">Loading…</p></div>
+          </div>
+          <div class="card">
+            <b>🎯 Daily challenge</b>
+            <p><b id="dc-t"></b></p>
+            <p class="mut" id="dc-d"></p>
+            <button id="dc">Try it in Practice</button>
+          </div>
+        </aside>
+      </section>
+      <section id="v-practice" class="view" hidden></section>
+      <section id="v-lobby" class="view" hidden></section>
+      <section id="v-profile" class="view" hidden></section>
+      <section id="v-lesson" class="view" hidden></section>
+      <nav>
+        <button data-tab="home"><span class="i">🏠</span>Home</button>
+        <button data-tab="practice"><span class="i">🧪</span>Practice</button>
+        <button data-tab="lobby" class="lobby">
+          <span class="i">⚔️</span>Arena
+        </button>
+        <button data-tab="lesson"><span class="i">📚</span>Lesson</button>
+        <button data-tab="profile"><span class="i">👤</span>Profile</button>
+      </nav>
+    </div>
+
+    <section id="room" hidden></section>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
